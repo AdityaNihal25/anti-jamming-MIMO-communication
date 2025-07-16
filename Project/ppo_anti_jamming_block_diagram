@@ -1,0 +1,21 @@
+// PPO Anti-Jamming MIMO System
+digraph {
+	node [color=lightgray shape=box style="rounded,filled"]
+	A [label="Channel Features
++ Jammer Label"]
+	B [label="Random Forest
+Jammer Classifier"]
+	C [label="PPO Agent
+(Modulation / Power / Nulling)"]
+	D [label="MATLAB MIMO+
+Jamming Simulation"]
+	E [label="Reward:
+SINR - α·Pwr - β·BER"]
+	edge [color=black]
+	A -> B [label="Input Features"]
+	A -> C [label=Obs]
+	B -> C [label="Predicted Jammer Type"]
+	C -> D [label="Action: [Mod, Pwr, Null]"]
+	D -> E [label="Output: SINR, BER"]
+	E -> C [label="Reward Feedback"]
+}
